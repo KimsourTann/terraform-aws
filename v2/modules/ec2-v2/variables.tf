@@ -1,7 +1,12 @@
+variable "key_pair_id" {
+  description = "Keys use for SSH"
+}
+
 variable "region" {
   default = "us-east-2"
   description = "var use to set aws region"
 }
+
 variable "aws_secret" {
   default = "/VOmMnXb+YUM+5tTOWaBUQD1kRmMSkh7tVvNk/4/"
 }
@@ -10,21 +15,20 @@ variable "aws_key" {
   default = "AKIA4MTWJACO545TUNXG"
 }
 
-
-variable "cidr_block" {
-  default = "1.0.0.0/16"
-}
-
 variable "env" {
   default = "dev"
 }
 
-variable "subnet_cdir_blocks" {
-  description = "CDIR block for the subnets"
+variable "security_group_ids" {
   type = list(string)
-  default = [ 
-    "10.0.1.0/24",
-    # "10.0.32.0/24", 
-    # "10.0.64.0/24" 
-  ]
+  description = "Security Group Ids"
+}
+
+variable "subnet_id" {
+  description = "Subnet for EC2"
+}
+
+variable "user_data" {
+  description = "Script run after lunch instance"
+  default = ""
 }

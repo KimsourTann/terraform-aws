@@ -10,21 +10,22 @@ variable "aws_key" {
   default = "AKIA4MTWJACO545TUNXG"
 }
 
-
-variable "cidr_block" {
-  default = "1.0.0.0/16"
-}
-
 variable "env" {
   default = "dev"
 }
 
-variable "subnet_cdir_blocks" {
-  description = "CDIR block for the subnets"
-  type = list(string)
-  default = [ 
-    "10.0.1.0/24",
-    # "10.0.32.0/24", 
-    # "10.0.64.0/24" 
-  ]
+variable "ingressess" {
+  type = map(any)
+  default = {
+    80 = [ "0.0.0.0/0" ]
+    443 = [ "0.0.0.0/0" ]
+    22 = [ "0.0.0.0/0" ]
+  }
+}
+
+variable "egressess" {
+  type = map(any)
+  default = {
+        0 = [ "0.0.0.0/0" ]
+    }
 }
