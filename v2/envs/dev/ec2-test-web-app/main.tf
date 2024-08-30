@@ -4,6 +4,17 @@ provider "aws" {
   secret_key = var.aws_secret
 }
 
+# Use to setup s3 as Backend
+# terraform {
+#   backend "s3" {
+#     bucket = "kimsour-terraform-state"
+#     key = "ec2-test/s3/terraform.tfstate"
+#     region = "us-east-2"
+#     dynamodb_table = "terraform-state"
+#     encrypt = true
+#   }
+# }
+
 
 data "aws_vpc" "default" {
   default = true
