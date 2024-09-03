@@ -15,7 +15,7 @@ provider "aws" {
 # }
 
 module "subnet" {
-  source = "../../../modules/subnet"
+  source = "../../../../modules/subnet"
   for_each = toset(var.subnet_cdir_blocks)
   env = var.env
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id

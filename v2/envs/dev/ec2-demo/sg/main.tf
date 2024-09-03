@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 module "sg" {
-  source = "../../../modules/sg"
+  source = "../../../../modules/sg"
   env = var.env
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
   ingressess = var.ingressess

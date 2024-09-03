@@ -47,6 +47,7 @@ module "sg" {
 }
 
 module "ec2" {
+  count = 2
   source = "../../../modules/ec2-v2"
   key_pair_id = module.key_pair.key_pair_name
   security_group_ids = [module.sg.security_group_id]
