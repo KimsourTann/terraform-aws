@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.region
+  region     = var.region
   access_key = var.aws_key
   secret_key = var.aws_secret
 }
@@ -7,12 +7,12 @@ provider "aws" {
 
 # Use to create s3 bucket
 resource "aws_s3_bucket" "terraform_state" {
-    bucket = "kimsour-terraform-state"
+  bucket = "kimsour-terraform-state"
 
-    # Use to prevet accident delete s3 bucket (this s3 can be destroy only if you command attridute lifecycle)
-    # lifecycle {
-    #   prevent_destroy = true
-    # }
+  # Use to prevet accident delete s3 bucket (this s3 can be destroy only if you command attridute lifecycle)
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Use to enable s3 bucket version to backup previous version
@@ -23,7 +23,7 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
   }
 }
 
-
+ 
 # Use to encrypt data on s3 bucket to prevent leak data
 resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" {
   bucket = aws_s3_bucket.terraform_state.id
